@@ -1,0 +1,21 @@
+{
+  "name": "movie-api",
+  "version": "1.0.0",
+  "description": "This API essentially provides an interactive database of information on films, directors, and genres. Additionally, users can register to create and manage a list of their favorite films.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liztheshiz/movie-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liztheshiz/movie-api/issues"
+  },
+  "homepage": "https://github.com/liztheshiz/movie-api#readme"
+}
