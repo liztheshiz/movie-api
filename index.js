@@ -5,8 +5,8 @@ const express = require('express');
 const app = express();
 
 // MIDDLEWARE
-app.use(express.static('public'));
 app.use(morgan('common'));
+app.use(express.static('public'));
 
 // CUSTOM GET REQUESTS
 // movies to be returned on /movies request
