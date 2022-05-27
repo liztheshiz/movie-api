@@ -45,18 +45,11 @@ let topMovies = [
         director: ''
     }
 ];
-  
+ 
+app.use(express.static('public'));
 app.use(morgan('common'));
 
-// GET requests
-app.get('/', (req, res) => {
-    res.sendFile('public/index.html', { root: __dirname });
-});
-  
-app.get('/documentation', (req, res) => {                  
-    res.sendFile('public/documentation.html', { root: __dirname });
-});
-  
+// custom GET requests
 app.get('/movies', (req, res) => {
     res.json(topMovies);
 });
