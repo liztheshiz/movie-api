@@ -1,8 +1,15 @@
+// IMPORTED MODULES
 const express = require('express');
     morgan = require('morgan');
 
 const app = express();
 
+// MIDDLEWARE
+app.use(express.static('public'));
+app.use(morgan('common'));
+
+// CUSTOM GET REQUESTS
+// movies to be returned on /movies request
 let topMovies = [
     {
         title: 'Monty Python and the Holy Grail',
@@ -45,11 +52,8 @@ let topMovies = [
         director: ''
     }
 ];
- 
-app.use(express.static('public'));
-app.use(morgan('common'));
 
-// custom GET requests
+// return list of movies as json
 app.get('/movies', (req, res) => {
     res.json(topMovies);
 });
