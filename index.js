@@ -13,43 +13,51 @@ app.use(express.static('public'));
 let topMovies = [
     {
         title: 'Monty Python and the Holy Grail',
-        director: ''
+        director: 'Terry Gilliam and Terry Jones'
     },
     {
-        title: 'Nausicaa of the Valley of the Wind',
+        title: 'Nausicaa Of The Valley Of The Wind',
         director: 'Hayao Miyazaki'
     },
     {
-        title: '',
-        director: ''
+        title: 'Fried Green Tomatoes',
+        director: 'Jon Avnet'
     },
     {
-        title: '',
-        director: ''
+        title: 'Star Wars: Episode IV - A New Hope',
+        director: 'George Lucas'
     },
     {
-        title: '',
-        director: ''
+        title: 'Roma',
+        director: 'Alfonso Cuarón'
     },
     {
-        title: '',
-        director: ''
+        title: 'Mulholland Drive',
+        director: 'David Lynch'
     },
     {
-        title: '',
-        director: ''
+        title: 'The Power Of The Dog',
+        director: 'Jane Campion'
     },
     {
-        title: '',
-        director: ''
+        title: 'Mad Max 2: The Road Warrior',
+        director: 'George Miller'
     },
     {
-        title: '',
-        director: ''
+        title: 'La Strada',
+        director: 'Federico Fellini'
     },
     {
-        title: '',
-        director: ''
+        title: 'Hero',
+        director: 'Yi-Mou Zhang'
+    },
+    {
+        title: 'Crouching Tiger, Hidden Dragon',
+        director: 'Ang Lee'
+    },
+    {
+        title: 'Rio Bravo',
+        director: 'Howard Hawk'
     }
 ];
 
