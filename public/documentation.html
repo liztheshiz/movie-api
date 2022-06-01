@@ -16,5 +16,84 @@
         <h1>Welcome to Cinema Database!</h1>
         <p>This API essentially provides an interactive database of information on films, directors, and genres.<br>
         Additionally, users can register to create and manage a list of their favorite films.</p>
+
+        <h2>Table URL endpoints and their req/res types</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Business Logic</th>
+                    <th>URL</th>
+                    <th>HTTP Method</th>
+                    <th>Request body data format</th>
+                    <th>Response body data format</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Get list of all movies</td>
+                    <td>/movies</td>
+                    <td>GET</td>
+                    <td>none</td>
+                    <td>JSON object with list of movies by title and director</td>
+                </tr>
+                <tr>
+                    <td>Get data about a single movie by title</td>
+                    <td>/movies/[Title]</td>
+                    <td>GET</td>
+                    <td>none</td>
+                    <td>JSON object with movie info (description, genre, director, image URL, whether it's featured or not)</td>
+                </tr>
+                <tr>
+                    <td>Get data about a genre (description) by name/title</td>
+                    <td>/movies/[Genre]</td>
+                    <td>GET</td>
+                    <td>none</td>
+                    <td>Text message with genre description</td>
+                </tr>
+                <tr>
+                    <td>Get data about a director by name</td>
+                    <td>/movies/[Director]</td>
+                    <td>GET</td>
+                    <td>none</td>
+                    <td>JSON object with director info (bio, birth year, death year)</td>
+                </tr>
+                <tr>
+                    <td>Add new user</td>
+                    <td>/users</td>
+                    <td>POST</td>
+                    <td>JSON object with username and password</td>
+                    <td>JSON object with username, password, and favorite movies list (begins empty)</td>
+                </tr>
+                <tr>
+                    <td>Update user's username</td>
+                    <td>/users/[Username]</td>
+                    <td>PUT</td>
+                    <td>none</td>
+                    <td>Text message indicating user's old and new username</td>
+                </tr>
+                <tr>
+                    <td>Add movie to user's favorites list</td>
+                    <td>/users/[Username]/movies</td>
+                    <td>POST</td>
+                    <td>JSON object with data about movie (description, genre, director, image URL, whether it's featured or not)</td>
+                    <td>JSON object with data about movie that was added (description, genre, director, image URL, whether it's featured or not)</td>
+                </tr>
+                <tr>
+                    <td>Remove movie from user's favorites list</td>
+                    <td>/users/[Username]/movies</td>
+                    <td>DELETE</td>
+                    <td>none</td>
+                    <td>Text message indicating movie was removed</td>
+                </tr>
+                <tr>
+                    <td>Remove user</td>
+                    <td>/users/[Username]</td>
+                    <td>DELETE</td>
+                    <td>none</td>
+                    <td>Text message indicating user was removed</td>
+                </tr>
+            </tbody>
+        </table>
+
     </body>
 </html>
