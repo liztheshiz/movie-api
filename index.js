@@ -9,7 +9,7 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 
 // CUSTOM GET REQUESTS
-// movies to be returned on /movies request
+// Movies to be returned on /movies request
 let topMovies = [
     {
         title: 'Monty Python and the Holy Grail',
@@ -61,18 +61,17 @@ let topMovies = [
     }
 ];
 
-// return list of movies as json
+// Return list of movies as json
 app.get('/movies', (req, res) => {
     res.json(topMovies);
 });
 
-// error handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
 });
 
-// listen for requests
+// Listen for requests
 app.listen(8081, () => {
     console.log('Your app is listening on port 8081.');
 });
