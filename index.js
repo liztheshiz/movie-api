@@ -10,7 +10,7 @@ app.use(express.static('public'));
 
 // CUSTOM GET REQUESTS
 // Movies to be returned on /movies request
-let topMovies = [
+let movies = [
     {
         title: 'Monty Python and the Holy Grail',
         director: 'Terry Gilliam and Terry Jones'
@@ -63,9 +63,16 @@ let topMovies = [
 
 // Return list of movies as json
 app.get('/movies', (req, res) => {
-    res.json(topMovies);
+    res.json(movies);
 });
 
+// Gets the data about a single movie, by title
+app.get('/movies/:title', (req, res) => {
+    res.json(movies.find((movie) =>
+        { return movie.title === req.params.title }));
+});
+
+// Error handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
