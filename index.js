@@ -213,15 +213,15 @@ app.put('/users/:name/:newName', (req, res) => {
 app.post('/users/:name/topMovies', (req, res) => {
     let newMovie = req.body;
 
-    if (!newMovie.title) {
+    if (!movie.title) {
         const message = 'Missing title in request body';
         res.status(400).send(message);
     } else if (false /* Check if movie already in list */) {
         const message = 'Movie is already included in list';
         res.status(400).send(message);
     } else {
-        user.topMovies.push(newMovie);
-        res.status(201).send(newMovie);
+        user.topMovies.push(movie);
+        res.status(201).send(movie);
     }
 });
 
