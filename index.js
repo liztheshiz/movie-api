@@ -179,9 +179,9 @@ app.get('/movies/directors/:name', (req, res) => {
 
 // Adds data for a new user to list of users
 app.post('/users', (req, res) => {
-    let newUser = req.body;
+    let user = req.body;
 
-    if (!newUser.name) {
+    if (!user.name) {
         const message = 'Missing name in request body';
         res.status(400).send(message);
     } else if (false /* Check if username already exists */) {
@@ -189,8 +189,8 @@ app.post('/users', (req, res) => {
         res.status(400).send(message);
     } else {
         user.topMovies = {}; // Initialize empty top movies list for user
-        users.push(newUser);
-        res.status(201).send(newUser);
+        users.push(user);
+        res.status(201).json(user);
     }
 });
 
