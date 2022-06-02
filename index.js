@@ -151,7 +151,7 @@ app.get('/movies/:title', (req, res) => {
     if (movie) {
         res.status(201).json(movie);
     } else {
-        res.status(404).send('Movie with the title ' + req.params.name + ' was not found.');
+        res.status(404).send('Movie with the title ' + req.params.title + ' was not found.');
     }
 });
 
