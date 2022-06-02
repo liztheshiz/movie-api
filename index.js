@@ -1,11 +1,13 @@
 // IMPORTED MODULES
-const express = require('express');
-    morgan = require('morgan');
+const express = require('express'),
+    morgan = require('morgan'),
+    bodyParser = require('body-parser');
 
 const app = express();
 
 // MIDDLEWARE
 app.use(morgan('common'));
+app.use(bodyParser.json());
 app.use(express.static('public'));
 
 // CUSTOM GET REQUESTS
