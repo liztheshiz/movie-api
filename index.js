@@ -80,7 +80,7 @@ app.get('/movies/:genre', (req, res) => {
 });
 
 // Gets the data about a director, by name
-app.get('/movies/:genre', (req, res) => {
+app.get('/movies/:director', (req, res) => {
     
 });
 
