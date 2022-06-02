@@ -226,7 +226,8 @@ app.post('/users/:name/topMovies', (req, res) => {
 });
 
 // Deletes a movie from user's list by title
-app.delete('/users/:name/topMovies', (req, res) => {
+app.delete('/users/:name/topMovies/:title', (req, res) => {
+    let user = users.find((user) => { return user.name === req.params.name });
     let movie = user.topMovies.find((movie) => { return movie.title === req.params.title });
 
     if (movie) {
