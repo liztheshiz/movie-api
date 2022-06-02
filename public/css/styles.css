@@ -1,0 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: rgb(110, 139, 139);
+}
