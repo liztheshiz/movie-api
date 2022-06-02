@@ -211,7 +211,12 @@ app.put('/users/:name/:newName', (req, res) => {
 
 // Adds movie to user's list of top movies
 app.post('/users/:name/topMovies', (req, res) => {
-    let newMovie = req.body;
+    let movie = req.body;
+    let user = users.find((user) => { return user.name === req.params.name });
+
+    if (!user) {
+        res.status(404).send('User with the name ' + req.params.name + ' was not found.');
+    }
 
     if (!movie.title) {
         const message = 'Missing title in request body';
