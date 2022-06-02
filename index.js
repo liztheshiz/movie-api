@@ -72,6 +72,45 @@ app.get('/movies/:title', (req, res) => {
         { return movie.title === req.params.title }));
 });
 
+// Gets the data about a genre, by name
+app.get('/movies/:genre', (req, res) => {
+    
+});
+
+// Gets the data about a director, by name
+app.get('/movies/:genre', (req, res) => {
+    
+});
+
+// Adds data for a new user to list of users
+app.post('/users', (req, res) => {
+    let newUser = req.body;
+
+    if (!newUser.name) {
+        const message = 'Missing name in request body';
+        res.status(400).send(message);
+    } else if (false /* Check if username already exists */) {
+        const message = 'Username already exists';
+        res.status(400).send(message);
+    } else {
+        user.topMovies = {}; // Initialize empty top movies list for user
+        users.push(newUser);
+        res.status(201).send(newUser);
+    }
+});
+
+// Update the "name" of a user by current name NEEDS WORK!!!!!!!!
+app.put('/users/:name', (req, res) => {
+    let user = users.find((user) => { return user.name === req.params.name });
+  
+    if (user) {
+        user[req.params.name] = parseInt(req.params.name); // Unsure about this line of code!!
+        res.status(201).send('User ' + req.params.name + ' was assigned new name ' + req.params.name + ' in ' + req.params.name);
+    } else {
+        res.status(404).send('User with the name ' + req.params.name + ' was not found.');
+    }
+  });
+
 // Error handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
