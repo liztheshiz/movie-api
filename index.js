@@ -148,14 +148,26 @@ app.get('/movies/:title', (req, res) => {
         { return movie.title === req.params.title }));
 });
 
-// Gets the data about a genre, by name
-app.get('/movies/:genre', (req, res) => {
-    
+// Gets data about a genre, by name
+app.get('/movies/genres/:name', (req, res) => {
+    let genre = genres.find((genre) => { return genre.name === req.params.name });
+  
+    if (genre) {
+        res.status(201).send(genre.name + ': ' + genre.description);
+    } else {
+        res.status(404).send('Genre with the name ' + req.params.name + ' was not found.');
+    }
 });
 
-// Gets the data about a director, by name
-app.get('/movies/:director', (req, res) => {
-    
+// Gets data about a director, by name
+app.get('/movies/directors/:name', (req, res) => {
+    let director = directors.find((director) => { return director.name === req.params.name });
+  
+    if (director) {
+        res.status(201).json(director);
+    } else {
+        res.status(404).send('Director with the name ' + req.params.name + ' was not found.');
+    }
 });
 
 // Adds data for a new user to list of users
@@ -175,15 +187,18 @@ app.post('/users', (req, res) => {
     }
 });
 
-// Update the "name" of a user by current name NEEDS WORK!!!!!!!!
-app.put('/users/:name', (req, res) => {
+// Update the "name" of a user by current name
+app.put('/users/:name/:newName', (req, res) => {
     let user = users.find((user) => { return user.name === req.params.name });
   
-    if (user) {
-        user[req.params.name] = parseInt(req.params.name); // Unsure about this line of code!!
-        res.status(201).send('User ' + req.params.name + ' was assigned new name ' + req.params.name + ' in ' + req.params.name);
-    } else {
+    if (!user) {
         res.status(404).send('User with the name ' + req.params.name + ' was not found.');
+    } else if (false /* Check if username already exists */) {
+        const message = 'Username already exists';
+        res.status(400).send(message);
+    } else {
+        user.name = parseInt(req.params.newName);
+        res.status(201).send('User ' + req.params.name + ' was assigned new name ' + req.params.newName);
     }
 });
 
