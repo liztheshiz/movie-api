@@ -239,7 +239,9 @@ app.delete('/users/:name/topMovies', (req, res) => {
 app.delete('/users/:name', (req, res) => {
     let user = users.find((user) => { return user.name === req.params.name });
 
-    if (user) {
+    if (!user) {
+        res.status(404).send('User with the name ' + req.params.name + ' was not found.');
+    } else {
         users = users.filter((obj) => { return obj.name !== req.params.name });
         res.status(201).send('User ' + req.params.name + ' was deleted.');
     }
