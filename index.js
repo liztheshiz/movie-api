@@ -136,6 +136,8 @@ let directors = [
     }
 ];
 
+let users = [];
+
 // CUSTOM GET REQUESTS
 // Return list of movies as json
 app.get('/movies', (req, res) => {
