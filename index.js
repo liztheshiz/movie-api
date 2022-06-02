@@ -109,7 +109,43 @@ app.put('/users/:name', (req, res) => {
     } else {
         res.status(404).send('User with the name ' + req.params.name + ' was not found.');
     }
-  });
+});
+
+// Adds movie to user's list of top movies
+app.post('/users/:name/topMovies', (req, res) => {
+    let newMovie = req.body;
+
+    if (!newMovie.title) {
+        const message = 'Missing title in request body';
+        res.status(400).send(message);
+    } else if (false /* Check if movie already in list */) {
+        const message = 'Movie is already included in list';
+        res.status(400).send(message);
+    } else {
+        user.topMovies.push(newMovie);
+        res.status(201).send(newMovie);
+    }
+});
+
+// Deletes a movie from user's list by title
+app.delete('/users/:name/topMovies', (req, res) => {
+    let movie = user.topMovies.find((movie) => { return movie.title === req.params.title });
+
+    if (movie) {
+        user.topMovies = user.topMovies.filter((obj) => { return obj.title !== req.params.title });
+        res.status(201).send('Movie ' + req.params.title + ' was deleted from ' + user.name + '\'s list.');
+    }
+});
+
+// Deletes a user from users list by name
+app.delete('/users/:name', (req, res) => {
+    let user = users.find((user) => { return user.name === req.params.name });
+
+    if (user) {
+        users = users.filter((obj) => { return obj.name !== req.params.name });
+        res.status(201).send('User ' + req.params.name + ' was deleted.');
+    }
+});
 
 // Error handling
 app.use((err, req, res, next) => {
