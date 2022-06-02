@@ -188,7 +188,7 @@ app.post('/users', (req, res) => {
         const message = 'Username already exists';
         res.status(400).send(message);
     } else {
-        user.topMovies = {}; // Initialize empty top movies list for user
+        user.topMovies = []; // Initialize empty top movies array for user
         users.push(user);
         res.status(201).json(user);
     }
