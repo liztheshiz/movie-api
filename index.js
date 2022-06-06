@@ -1,13 +1,12 @@
 // IMPORTED MODULES
 const express = require('express'),
-    morgan = require('morgan'),
-    bodyParser = require('body-parser');
+    morgan = require('morgan');
 
 const app = express();
 
 // MIDDLEWARE
 app.use(morgan('common'));
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(express.static('public'));
 
 // IN-MEMORY ARRAYS
