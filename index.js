@@ -13,17 +13,9 @@ app.use(express.static('public'));
 // IN-MEMORY ARRAYS
 let movies = [
     {
-        title: 'Monty Python and the Holy Grail',
-        description: 'description here',
-        genre: 'genre here',
-        director: 'Terry Gilliam and Terry Jones',
-        imageUrl: 'url here',
-        featured: 'true/false here'
-    },
-    {
         title: 'Nausicaa Of The Valley Of The Wind',
         description: 'description here',
-        genre: 'genre here',
+        genre: 'Animation',
         director: 'Hayao Miyazaki',
         imageUrl: 'url here',
         featured: 'true/false here'
@@ -31,7 +23,7 @@ let movies = [
     {
         title: 'Fried Green Tomatoes',
         description: 'description here',
-        genre: 'genre here',
+        genre: 'Comedy-drama',
         director: 'Jon Avnet',
         imageUrl: 'url here',
         featured: 'true/false here'
@@ -39,23 +31,15 @@ let movies = [
     {
         title: 'Star Wars: Episode IV - A New Hope',
         description: 'description here',
-        genre: 'genre here',
+        genre: 'Sci-fi Fantasy',
         director: 'George Lucas',
-        imageUrl: 'url here',
-        featured: 'true/false here'
-    },
-    {
-        title: 'Roma',
-        description: 'description here',
-        genre: 'genre here',
-        director: 'Alfonso Cuarón',
         imageUrl: 'url here',
         featured: 'true/false here'
     },
     {
         title: 'Mulholland Drive',
         description: 'description here',
-        genre: 'genre here',
+        genre: 'Mystery',
         director: 'David Lynch',
         imageUrl: 'url here',
         featured: 'true/false here'
@@ -63,7 +47,7 @@ let movies = [
     {
         title: 'The Power Of The Dog',
         description: 'description here',
-        genre: 'genre here',
+        genre: 'Drama',
         director: 'Jane Campion',
         imageUrl: 'url here',
         featured: 'true/false here'
@@ -71,15 +55,23 @@ let movies = [
     {
         title: 'Mad Max 2: The Road Warrior',
         description: 'description here',
-        genre: 'genre here',
+        genre: 'Action',
+        director: 'George Miller',
+        imageUrl: 'url here',
+        featured: 'true/false here'
+    },
+    {
+        title: 'Mad Max: Fury Road',
+        description: 'description here',
+        genre: 'Action',
         director: 'George Miller',
         imageUrl: 'url here',
         featured: 'true/false here'
     },
     {
         title: 'La Strada',
-        description: 'description here',
-        genre: 'genre here',
+        description: 'Gelsomina, a simple-minded young woman is bought from her mother by Zampanò, a brutish strongman who takes her with him on the road.',
+        genre: 'Drama',
         director: 'Federico Fellini',
         imageUrl: 'url here',
         featured: 'true/false here'
@@ -87,24 +79,16 @@ let movies = [
     {
         title: 'Hero',
         description: 'description here',
-        genre: 'genre here',
-        director: 'Yi-Mou Zhang',
+        genre: 'Wuxia',
+        director: 'Zhang Yimou',
         imageUrl: 'url here',
         featured: 'true/false here'
     },
     {
         title: 'Crouching Tiger, Hidden Dragon',
         description: 'description here',
-        genre: 'genre here',
+        genre: 'Wuxia',
         director: 'Ang Lee',
-        imageUrl: 'url here',
-        featured: 'true/false here'
-    },
-    {
-        title: 'Rio Bravo',
-        description: 'description here',
-        genre: 'genre here',
-        director: 'Howard Hawk',
         imageUrl: 'url here',
         featured: 'true/false here'
     }
@@ -112,25 +96,87 @@ let movies = [
 
 let genres = [
     {
-        name: 'Action',
-        description: 'Action description here.'
+        name: 'Animation',
+        description: 'description here.'
     },
     {
-        name: 'Western',
-        description: 'Western description here.'
+        name: 'Comedy-drama',
+        description: 'description here.'
+    },
+    {
+        name: 'Sci-fi Fantasy',
+        description: 'description here.'
+    },
+    {
+        name: 'Drama',
+        description: 'description here.'
+    },
+    {
+        name: 'Mystery',
+        description: 'description here.'
+    },
+    {
+        name: 'Action',
+        description: 'description here.'
+    },
+    {
+        name: 'Wuxia',
+        description: 'description here.'
     }
 ];
 
 let directors = [
     {
         name: 'Hayao Miyazaki',
-        bio: 'Action description here.',
+        bio: 'bio here',
         birthYear: 'birth year here',
         deathYear: 'death year here'
     },
     {
-        name: 'John Avnett',
-        bio: 'Action description here.',
+        name: 'Jon Avnet',
+        bio: 'bio here',
+        birthYear: 'birth year here',
+        deathYear: 'death year here'
+    },
+    {
+        name: 'George Lucas',
+        bio: 'bio here',
+        birthYear: 'birth year here',
+        deathYear: 'death year here'
+    },
+    {
+        name: 'David Lynch',
+        bio: 'bio here',
+        birthYear: 'birth year here',
+        deathYear: 'death year here'
+    },
+    {
+        name: 'Jane Campion',
+        bio: 'bio here',
+        birthYear: 'birth year here',
+        deathYear: 'death year here'
+    },
+    {
+        name: 'George Miller',
+        bio: 'bio here',
+        birthYear: 'birth year here',
+        deathYear: 'death year here'
+    },
+    {
+        name: 'Federico Fellini',
+        bio: 'bio here',
+        birthYear: 'birth year here',
+        deathYear: 'death year here'
+    },
+    {
+        name: 'Zhang Yimou',
+        bio: 'bio here',
+        birthYear: 'birth year here',
+        deathYear: 'death year here'
+    },
+    {
+        name: 'Ang Lee',
+        bio: 'bio here',
         birthYear: 'birth year here',
         deathYear: 'death year here'
     }
