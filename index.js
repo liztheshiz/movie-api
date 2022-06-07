@@ -303,15 +303,19 @@ app.delete('/users/:username/FavoriteMovies/:movieid', (req, res) => {
 });
 
 // Deletes a user from users collection by username
-app.delete('/users/:name', (req, res) => {
-    let user = users.find((user) => { return user.name === req.params.name });
-
-    if (!user) {
-        res.status(404).send('User with the name ' + req.params.name + ' was not found.');
-    } else {
-        users = users.filter((obj) => { return obj.name !== req.params.name });
-        res.status(201).send('User ' + req.params.name + ' was deleted.');
-    }
+app.delete('/users/:username', (req, res) => {
+    Users.findOneAndRemove({Username: req.params.username})
+        .then(user => {
+            if (!user) {
+                res.status(404).send('User with the name ' + req.params.username + ' was not found.');
+            } else {
+                res.status(200).send(req.params.username + ' was successfully deleted');
+            }
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    });
 });
 
 // Error handling
