@@ -305,7 +305,7 @@ app.delete('/users/:username/FavoriteMovies/:movieid', (req, res) => {
 // Deletes a user from users collection by username
 app.delete('/users/:username', (req, res) => {
     Users.findOneAndRemove({Username: req.params.username})
-        .then(user => {
+    .then(user => {
             if (!user) {
                 res.status(404).send('User with the name ' + req.params.username + ' was not found.');
             } else {
