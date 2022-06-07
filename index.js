@@ -210,13 +210,13 @@ app.get('/movies/:title', (req, res) => {
 
 // Gets data about a genre, by name
 app.get('/movies/genres/:name', (req, res) => {
-    let genre = genres.find((genre) => { return genre.name === req.params.name });
-  
-    if (genre) {
-        res.status(201).send(genre.name + ': ' + genre.description);
-    } else {
-        res.status(404).send('Genre with the name ' + req.params.name + ' was not found.');
-    }
+    Movies.findOne({'Genre.Name': req.params.name}).then(movie => {
+        if (movie) {
+            res.status(201).send(movie.Genre.Description);
+        } else {
+            res.status(404).send('Genre with the name ' + req.params.name + ' was not found.')
+        }
+    });
 });
 
 // Gets data about a director, by name
