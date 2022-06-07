@@ -192,7 +192,7 @@ let users = [];
 // CUSTOM GET REQUESTS
 // Return list of movies as json
 app.get('/movies', (req, res) => {
-    res.json(movies);
+    Movies.find().then(movies => res.json(movies));
 });
 
 // Gets data about a single movie, by title
