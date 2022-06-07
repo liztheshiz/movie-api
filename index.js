@@ -94,7 +94,7 @@ app.put('/users/:username', (req, res) => {
             Email: req.body.Email,
             Birthday: req.body.Birthday
         }
-    })
+    }, {new: true})
     .then(user => {res.status(201).json(user)})
     .catch(err => {
         console.error(err);
@@ -106,7 +106,7 @@ app.put('/users/:username', (req, res) => {
 app.post('/users/:username/FavoriteMovies/:movieid', (req, res) => {
     Users.findOneAndUpdate({ Username: req.params.username }, {
         $addToSet: { FavoriteMovies: req.params.movieid }   // WON'T THROW ERROR IF MOVIE ALREADY PRESENT
-    })
+    }, {new: true})
     .then(user => {res.status(201).json(user)})
     .catch(err => {
         console.error(err);
@@ -118,7 +118,7 @@ app.post('/users/:username/FavoriteMovies/:movieid', (req, res) => {
 app.delete('/users/:username/FavoriteMovies/:movieid', (req, res) => {
     Users.findOneAndUpdate({ Username: req.params.username }, {
         $pull: { FavoriteMovies: req.params.movieid }
-    })
+    }, {new: true})
     .then(user => {res.status(201).send('Movie ' + req.params.movieid + ' was deleted from ' + user.Username + '\'s list.')})
     .catch(err => {
         console.error(err);
