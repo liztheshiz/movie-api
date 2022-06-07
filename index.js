@@ -1,8 +1,14 @@
 // IMPORTED MODULES
 const express = require('express'),
-    morgan = require('morgan');
+    morgan = require('morgan'),
+    mongoose = require('mongoose'),
+    Models = require('./models.js');
 
-const app = express();
+const app = express(),
+    Movies = Models.Movie,
+    Users = Models.User;
+
+mongoose.connect('mongodb://localhost:27017/CinemaDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // MIDDLEWARE
 app.use(morgan('common'));
