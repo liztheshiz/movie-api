@@ -207,6 +207,9 @@ app.get('/movies/:title', (req, res) => {
         } else {
             res.status(404).send('Movie with the title ' + req.params.title + ' was not found.');
         }
+    }).catch(err => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
     });
 });
 
