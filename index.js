@@ -261,19 +261,25 @@ app.post('/users', (req, res) => {
     });
 });
 
-// Update the Username of a user by current Username
-app.put('/users/:name/:newName', (req, res) => {
-    let user = users.find((user) => { return user.name === req.params.name });
-  
-    if (!user) {
-        res.status(404).send('User with the name ' + req.params.name + ' was not found.');
-    } else if (false /* Check if username already exists */) {
-        const message = 'Username already exists';
-        res.status(400).send(message);
-    } else {
-        user.name = parseInt(req.params.newName);
-        res.status(201).send('User ' + req.params.name + ' was assigned new name ' + req.params.newName);
-    }
+// Update user's info by current Username
+app.put('/users/:username', (req, res) => {
+    Users.findOneAndUpdate({ Username: req.params.username }, { $set:
+        {
+            Username: req.body.Username,
+            Password: req.body.Password,
+            Email: req.body.Email,
+            Birthday: req.body.Birthday
+        }
+      },
+      { new: true },
+      (err, updatedUser) => {
+        if(err) {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        } else {
+            res.json(updatedUser);
+        }
+      });
 });
 
 // Adds movie to user's list of favorite movies
