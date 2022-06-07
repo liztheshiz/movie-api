@@ -208,7 +208,7 @@ app.get('/movies/:title', (req, res) => {
     });
 });
 
-// Gets data about a genre, by name
+// Gets description of a given genre, by name
 app.get('/movies/genres/:name', (req, res) => {
     Movies.findOne({'Genre.Name': req.params.name}).then(movie => {
         if (movie) {
