@@ -270,16 +270,12 @@ app.put('/users/:username', (req, res) => {
             Email: req.body.Email,
             Birthday: req.body.Birthday
         }
-      },
-      { new: true },
-      (err, updatedUser) => {
-        if(err) {
-            console.error(err);
-            res.status(500).send('Error: ' + err);
-        } else {
-            res.json(updatedUser);
-        }
-      });
+    })
+    .then(user => {res.status(201).json(user)})
+    .catch(err => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    });
 });
 
 // Adds movie to user's list of favorite movies
