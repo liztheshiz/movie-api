@@ -249,15 +249,15 @@ app.post('/users', (req, res) => {
                 FavoriteMovies: []
             })
             .then(user => {res.status(201).json(user)})
-            .catch(error => {
-                console.error(error);
-                res.status(500).send('Error: ' + error);
+            .catch(err => {
+                console.error(err);
+                res.status(500).send('Error: ' + err);
             });
         }
     })
     .catch(error => {
-        console.error(error);
-        res.status(500).send('Error: ' + error);
+        console.error(err);
+        res.status(500).send('Error: ' + err);
     });
 });
 
