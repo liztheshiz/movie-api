@@ -232,19 +232,28 @@ app.get('/movies/directors/:name', (req, res) => {
 
 // Adds data for a new user to list of users
 app.post('/users', (req, res) => {
-    let user = req.body;
-
-    if (!user.name) {
-        const message = 'Missing name in request body';
-        res.status(400).send(message);
-    } else if (false /* Check if username already exists */) {
-        const message = 'Username already exists';
-        res.status(400).send(message);
-    } else {
-        user.topMovies = []; // Initialize empty top movies array for user
-        users.push(user);
-        res.status(201).json(user);
-    }
+    Users.findOne({Username: req.body.Username}).then(user => {
+        if (user) {
+            res.status(400).send('Username ' + req.body.Username + ' already exists');
+        } else {
+            Users.create({
+                Username: req.body.Username,
+                Password: req.body.Password,
+                Email: req.body.Email,
+                Birthday: req.body.Birthday,
+                FavoriteMovies: []
+            })
+            .then(user => {res.status(201).json(user)})
+            .catch(error => {
+                console.error(error);
+                res.status(500).send('Error: ' + error);
+            });
+        }
+    })
+    .catch(error => {
+        console.error(error);
+        res.status(500).send('Error: ' + error);
+    });
 });
 
 // Update the "name" of a user by current name
