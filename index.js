@@ -221,13 +221,13 @@ app.get('/movies/genres/:name', (req, res) => {
 
 // Gets data about a director, by name
 app.get('/movies/directors/:name', (req, res) => {
-    let director = directors.find((director) => { return director.name === req.params.name });
-  
-    if (director) {
-        res.status(201).json(director);
-    } else {
-        res.status(404).send('Director with the name ' + req.params.name + ' was not found.');
-    }
+    Movies.findOne({'Director.Name': req.params.name}).then(movie => {
+        if (movie) {
+            res.status(201).json(movie.Director);
+        } else {
+            res.status(404).send('Director with the name ' + req.params.name + ' was not found.')
+        }
+    });
 });
 
 // Adds data for a new user to list of users
