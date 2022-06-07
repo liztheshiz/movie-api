@@ -199,13 +199,13 @@ app.get('/movies', (req, res) => {
 
 // Gets data about a single movie, by title
 app.get('/movies/:title', (req, res) => {
-    let movie = movies.find((movie) => { return movie.title === req.params.title });
-
-    if (movie) {
-        res.status(201).json(movie);
-    } else {
-        res.status(404).send('Movie with the title ' + req.params.title + ' was not found.');
-    }
+    Movies.findOne({Title: req.params.title}).then(movie => {
+        if (movie) {
+            res.status(201).json(movie);
+        } else {
+            res.status(404).send('Movie with the title ' + req.params.title + ' was not found.');
+        }
+    });
 });
 
 // Gets data about a genre, by name
