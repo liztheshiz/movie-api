@@ -3,6 +3,8 @@ const express = require('express'),
     morgan = require('morgan'),
     mongoose = require('mongoose'),
     Models = require('./models.js');
+/*const req = require('express/lib/request');
+const res = require('express/lib/response');*/
 
 const app = express(),
     Movies = Models.Movie,
