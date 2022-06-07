@@ -194,7 +194,7 @@ let users = [];
 */
 
 // CUSTOM GET REQUESTS
-// Return list of movies as json
+// Return movies collection as json
 app.get('/movies', (req, res) => {
     Movies.find().then(movies => res.json(movies));
 });
@@ -213,7 +213,7 @@ app.get('/movies/:title', (req, res) => {
     });
 });
 
-// Gets description of a given genre, by name
+// Gets description of a given genre
 app.get('/movies/genres/:name', (req, res) => {
     Movies.findOne({'Genre.Name': req.params.name}).then(movie => {
         if (movie) {
@@ -235,7 +235,7 @@ app.get('/movies/directors/:name', (req, res) => {
     });
 });
 
-// Adds data for a new user to list of users
+// Adds new user doc to users collection
 app.post('/users', (req, res) => {
     Users.findOne({Username: req.body.Username}).then(user => {
         if (user) {
@@ -261,7 +261,7 @@ app.post('/users', (req, res) => {
     });
 });
 
-// Update the "name" of a user by current name
+// Update the Username of a user by current Username
 app.put('/users/:name/:newName', (req, res) => {
     let user = users.find((user) => { return user.name === req.params.name });
   
@@ -276,8 +276,8 @@ app.put('/users/:name/:newName', (req, res) => {
     }
 });
 
-// Adds movie to user's list of top movies
-app.post('/users/:name/topMovies', (req, res) => {
+// Adds movie to user's list of favorite movies
+app.post('/users/:name/FavoriteMovies', (req, res) => {
     let movie = req.body;
     let user = users.find((user) => { return user.name === req.params.name });
 
@@ -298,7 +298,7 @@ app.post('/users/:name/topMovies', (req, res) => {
 });
 
 // Deletes a movie from user's list by title
-app.delete('/users/:name/topMovies/:title', (req, res) => {
+app.delete('/users/:name/FavoriteMovies/:title', (req, res) => {
     let user = users.find((user) => { return user.name === req.params.name });
     let movie = user.topMovies.find((movie) => { return movie.title === req.params.title });
 
@@ -308,7 +308,7 @@ app.delete('/users/:name/topMovies/:title', (req, res) => {
     }
 });
 
-// Deletes a user from users list by name
+// Deletes a user from users collection by username
 app.delete('/users/:name', (req, res) => {
     let user = users.find((user) => { return user.name === req.params.name });
 
