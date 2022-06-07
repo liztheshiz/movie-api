@@ -255,7 +255,7 @@ app.post('/users', (req, res) => {
             });
         }
     })
-    .catch(error => {
+    .catch(err => {
         console.error(err);
         res.status(500).send('Error: ' + err);
     });
@@ -279,24 +279,15 @@ app.put('/users/:username', (req, res) => {
 });
 
 // Adds movie to user's list of favorite movies
-app.post('/users/:name/FavoriteMovies', (req, res) => {
-    let movie = req.body;
-    let user = users.find((user) => { return user.name === req.params.name });
-
-    if (!user) {
-        res.status(404).send('User with the name ' + req.params.name + ' was not found.');
-    }
-
-    if (!movie.title) {
-        const message = 'Missing title in request body';
-        res.status(400).send(message);
-    } else if (false /* Check if movie already in list */) {
-        const message = 'Movie is already included in list';
-        res.status(400).send(message);
-    } else {
-        user.topMovies.push(movie);
-        res.status(201).send(movie);
-    }
+app.post('/users/:username/FavoriteMovies/:movieid', (req, res) => {
+    Users.findOneAndUpdate({ Username: req.params.username }, {
+        $push: { FavoriteMovies: req.params.movieid }
+    })
+    .then(user => {res.status(201).json(user)})
+    .catch(err => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    });
 });
 
 // Deletes a movie from user's list by title
