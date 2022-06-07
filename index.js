@@ -281,7 +281,7 @@ app.put('/users/:username', (req, res) => {
 // Adds movie to user's list of favorite movies
 app.post('/users/:username/FavoriteMovies/:movieid', (req, res) => {
     Users.findOneAndUpdate({ Username: req.params.username }, {
-        $push: { FavoriteMovies: req.params.movieid }
+        $addToSet: { FavoriteMovies: req.params.movieid }   // WON'T THROW ERROR IF MOVIE ALREADY PRESENT
     })
     .then(user => {res.status(201).json(user)})
     .catch(err => {
@@ -291,14 +291,15 @@ app.post('/users/:username/FavoriteMovies/:movieid', (req, res) => {
 });
 
 // Deletes a movie from user's list by title
-app.delete('/users/:name/FavoriteMovies/:title', (req, res) => {
-    let user = users.find((user) => { return user.name === req.params.name });
-    let movie = user.topMovies.find((movie) => { return movie.title === req.params.title });
-
-    if (movie) {
-        user.topMovies = user.topMovies.filter((obj) => { return obj.title !== req.params.title });
-        res.status(201).send('Movie ' + req.params.title + ' was deleted from ' + user.name + '\'s list.');
-    }
+app.delete('/users/:username/FavoriteMovies/:movieid', (req, res) => {
+    Users.findOneAndUpdate({ Username: req.params.username }, {
+        $pull: { FavoriteMovies: req.params.movieid }
+    })
+    .then(user => {res.status(201).send('Movie ' + req.params.title + ' was deleted from ' + user.name + '\'s list.')})
+    .catch(err => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    });
 });
 
 // Deletes a user from users collection by username
