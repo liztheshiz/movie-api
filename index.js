@@ -15,6 +15,7 @@ app.use(morgan('common'));
 app.use(express.json());
 app.use(express.static('public'));
 
+/*
 // IN-MEMORY ARRAYS
 let movies = [
     {
@@ -188,6 +189,7 @@ let directors = [
 ];
 
 let users = [];
+*/
 
 // CUSTOM GET REQUESTS
 // Return list of movies as json
