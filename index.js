@@ -15,6 +15,10 @@ app.use(morgan('common'));
 app.use(express.json());
 app.use(express.static('public'));
 
+let auth = require('./auth.js')(app);
+const passport = require('passport');
+require('./passport.js');
+
 // CUSTOM GET REQUESTS
 // Return movies collection as json
 app.get('/movies', (req, res) => {
