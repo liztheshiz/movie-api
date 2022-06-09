@@ -76,47 +76,73 @@ app.get('/movies/directors/:name', passport.authenticate('jwt', {session: false}
 });
 
 // Adds new user doc to users collection
-app.post('/users', (req, res) => {
-    let hashedPassword = Users.hashPassword(req.body.Password);
-    Users.findOne({Username: req.body.Username}).then(user => {
-        if (user) {
-            res.status(400).send('Username ' + req.body.Username + ' already exists');
-        } else {
-            Users.create({
-                Username: req.body.Username,
-                Password: hashedPassword,
-                Email: req.body.Email,
-                Birthday: req.body.Birthday,
-                FavoriteMovies: []
-            })
-            .then(user => {res.status(201).json(user)})
-            .catch(err => {
-                console.error(err);
-                res.status(500).send('Error: ' + err);
-            });
+app.post('/users',
+    [   // Validation checks
+        check('Username', 'Username must be at least 5 characters').isLength({min: 5}),
+        check('Username', 'Username must contain only alphanumeric characters').isAlphanumeric(),
+        check('Password', 'Password must be at least 8 characters').isLength({min: 8}),
+        check('Email', 'Email does not appear to be valid').isEmail()
+    ],
+    (req, res) => {
+        // First check for validation errors
+        let errors = validationResult(req);
+        if (!error.isEmpty()) {
+            return res.status(422).json({errors: errors.array()});
         }
-    })
-    .catch(err => {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
-    });
+        
+        let hashedPassword = Users.hashPassword(req.body.Password);
+        Users.findOne({Username: req.body.Username}).then(user => {
+            if (user) {
+                res.status(400).send('Username ' + req.body.Username + ' already exists');
+            } else {
+                Users.create({
+                    Username: req.body.Username,
+                    Password: hashedPassword,
+                    Email: req.body.Email,
+                    Birthday: req.body.Birthday,
+                    FavoriteMovies: []
+                })
+                .then(user => {res.status(201).json(user)})
+                .catch(err => {
+                    console.error(err);
+                    res.status(500).send('Error: ' + err);
+                });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
 // Update user's info by current Username
-app.put('/users/:username', passport.authenticate('jwt', {session: false}), (req, res) => {
-    Users.findOneAndUpdate({ Username: req.params.username }, { $set:
-        {
-            Username: req.body.Username,
-            Password: req.body.Password,
-            Email: req.body.Email,
-            Birthday: req.body.Birthday
+app.put('/users/:username', passport.authenticate('jwt', {session: false}),
+    [   // Validation checks
+        check('Username', 'Username must be at least 5 characters').isLength({min: 5}),
+        check('Username', 'Username must contain only alphanumeric characters').isAlphanumeric(),
+        check('Password', 'Password must be at least 8 characters').isLength({min: 8}),
+        check('Email', 'Email does not appear to be valid').isEmail()
+    ],
+    (req, res) => {
+        // First check for validation errors
+        let errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(422).json({errors: errors.array()});
         }
-    }, {new: true})
-    .then(user => {res.status(201).json(user)})
-    .catch(err => {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
-    });
+
+        Users.findOneAndUpdate({ Username: req.params.username }, { $set:
+            {
+                Username: req.body.Username,
+                Password: req.body.Password,
+                Email: req.body.Email,
+                Birthday: req.body.Birthday
+            }
+        }, {new: true})
+        .then(user => {res.status(201).json(user)})
+        .catch(err => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
 // Adds movie to user's list of favorite movies
