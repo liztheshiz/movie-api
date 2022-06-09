@@ -76,13 +76,14 @@ app.get('/movies/directors/:name', passport.authenticate('jwt', {session: false}
 
 // Adds new user doc to users collection
 app.post('/users', (req, res) => {
+    let hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOne({Username: req.body.Username}).then(user => {
         if (user) {
             res.status(400).send('Username ' + req.body.Username + ' already exists');
         } else {
             Users.create({
                 Username: req.body.Username,
-                Password: req.body.Password,
+                Password: hashedPassword,
                 Email: req.body.Email,
                 Birthday: req.body.Birthday,
                 FavoriteMovies: []
