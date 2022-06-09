@@ -3,6 +3,7 @@ const express = require('express'),
     morgan = require('morgan'),
     mongoose = require('mongoose'),
     Models = require('./models.js');
+    cors = require('cors');
 
 const app = express(),
     Movies = Models.Movie,
@@ -14,6 +15,7 @@ mongoose.connect('mongodb://localhost:27017/CinemaDB', { useNewUrlParser: true, 
 app.use(morgan('common'));
 app.use(express.json());
 app.use(express.static('public'));
+app.use(cors());
 
 let auth = require('./auth.js')(app);
 const passport = require('passport');
