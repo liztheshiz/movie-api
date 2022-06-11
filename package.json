@@ -4,7 +4,7 @@
   "description": "This API essentially provides an interactive database of information on films, directors, and genres. Additionally, users can register to create and manage a list of their favorite films.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    //"test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
   "repository": {
