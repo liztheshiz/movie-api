@@ -215,7 +215,7 @@
                         </pre>
                     </p>
                     <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">JSON object with data about user (user id, username, password, email, birthday (if present), favorite movies list), and newly created SWT
+                    <p class="endpoints_endpoint-info_data">JSON object with data about user (user id, username, password, email, birthday (if present), favorite movies list), and newly created JSON web token (JWT)
                         <pre>
                             <code>
                                 {
@@ -226,7 +226,7 @@
                                     Birthday: Date,
                                     FavoriteMovies: [MovieId]
                                 }
-                                token: [SWT]
+                                token: [JWT]
                             </code>
                         </pre></p>
                 </div>
