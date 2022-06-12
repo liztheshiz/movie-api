@@ -2,6 +2,12 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffcfbf;
+    color: #2b2b2b;
+}
+
 h1 {
     font-size: 36px;
 }
