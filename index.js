@@ -20,7 +20,8 @@ app.use(express.static('public'));
 
 app.use(cors());
 
-/*let allowedOrigins = ['http://localhost:8081', 'http://testsite.com']; // PLACEHOLDER FOR CINEMADB DOMAIN
+/*
+let allowedOrigins = ['http://localhost:8081', 'https://cinemadatabase.herokuapp.com'];
 app.use(cors({
     origin: (origin, callback) => {
         if(!origin) return callback(null, true);
@@ -30,7 +31,8 @@ app.use(cors({
         }
         return callback(null, true);
     }
-}));*/
+}));
+*/
 
 let auth = require('./auth.js')(app);
 const passport = require('passport');
