@@ -40,29 +40,30 @@
                     <h4>Request body data format:</h4>
                     <p class="endpoints_endpoint-info_data">none</p>
                     <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">JSON object with movie info (movie id, description, genre, director, image URL, and whether it's featured or not)
-                        <pre>
-                            <code>
-                                {
-                                    _id: ObjectId,
-                                    Title: String,
-                                    Description: String,
-                                    Genre: {
-                                        Name: String,
-                                        Description: String
-                                    },
-                                    Director: {
-                                        Name: String,
-                                        Bio: String,
-                                        Birth: Date,
-                                        Death: Date
-                                    },
-                                    ImagePath: String,
-                                    Featured: Boolean
-                                }
-                            </code>
-                        </pre>
+                    <p class="endpoints_endpoint-info_data">
+                        JSON object with movie info (movie id, description, genre, director, image URL, and whether it's featured or not)
                     </p>
+                    <pre class="endpoints_endpoint-info_code">
+                        <code>
+                            {
+                                _id: ObjectId,
+                                Title: String,
+                                Description: String,
+                                Genre: {
+                                    Name: String,
+                                    Description: String
+                                },
+                                Director: {
+                                    Name: String,
+                                    Bio: String,
+                                    Birth: Date,
+                                    Death: Date
+                                },
+                                ImagePath: String,
+                                Featured: Boolean
+                            }
+                        </code>
+                    </pre>
                 </div>
 
                 <div class="endpoints_endpoint-info">
@@ -80,84 +81,108 @@
                     <h4>Request body data format:</h4>
                     <p class="endpoints_endpoint-info_data">none</p>
                     <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">JSON object with director info (bio, birth year, and death year)
-                        <pre>
-                            <code>
-                                {
-                                    Name: String,
-                                    Bio: String,
-                                    Birth: Date,
-                                    Death: Date
-                                }
-                            </code>
-                        </pre>
+                    <p class="endpoints_endpoint-info_data">
+                        JSON object with director info (bio, birth year, and death year)
                     </p>
+                    <pre class="endpoints_endpoint-info_code">
+                        <code>
+                            {
+                                Name: String,
+                                Bio: String,
+                                Birth: Date,
+                                Death: Date
+                            }
+                        </code>
+                    </pre>
                 </div>
 
                 <div class="endpoints_endpoint-info">
                     <h3>POST /users</h3>
                     <p>Adds new user to database</p>
                     <h4>Request body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">JSON object with username, password, email, and (optionally) birthday
-                        <pre>
-                            <code>
-                                {
-                                    Username: String,
-                                    Password: String,
-                                    Email: String,
-                                    Birthday: Date ("mm/dd/yy")
-                                }
-                            </code>
-                        </pre>
+                    <p class="endpoints_endpoint-info_data">
+                        JSON object with username, password, email, and (optionally) birthday
                     </p>
+                    <p class="endpoints_endpoint-info_data">
+                        Input verification:<br>
+                        <ul class="endpoints_endpoint-info_data_list">
+                            <li>Username must be at least 5 characters long and include only alphanumeric characters</li>
+                            <li>Password must be at least 8 characters long</li>
+                            <li>Email must be a valid email address</li>
+                        </ul>
+                    </p>
+                    <pre class="endpoints_endpoint-info_code">
+                        <code>
+                            {
+                                Username: String,
+                                Password: String,
+                                Email: String,
+                                Birthday: Date ("mm/dd/yy")
+                            }
+                        </code>
+                    </pre>
                     <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">JSON object with user id, username, password, email, birthday (if present), and favorite movies list (begins empty)
-                        <pre>
-                            <code>
-                                {
-                                    _id: ObjectId,
-                                    Username: String,
-                                    Password: String,
-                                    Email: String,
-                                    Birthday: Date,
-                                    FavoriteMovies: [MovieId]
-                                }
-                            </code>
-                        </pre>
+                    <p class="endpoints_endpoint-info_data">
+                        JSON object with user id, username, password, email, birthday (if present), and favorite movies list (begins empty)
                     </p>
+                    <pre class="endpoints_endpoint-info_code">
+                        <code>
+                            {
+                                _id: ObjectId,
+                                Username: String,
+                                Password: String,
+                                Email: String,
+                                Birthday: Date,
+                                FavoriteMovies: [MovieId]
+                            }
+                        </code>
+                    </pre>
                 </div>
 
                 <div class="endpoints_endpoint-info">
                     <h3>PUT /users/[Username]</h3>
                     <p>Updates user's info by current username</p>
                     <h4>Request body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">JSON object with data about user (username, password, email, and birthday (if present))
-                        <pre>
-                            <code>
-                                {
-                                    Username: String,
-                                    Password: String,
-                                    Email: String,
-                                    Birthday: Date ("mm/dd/yy")
-                                }
-                            </code>
-                        </pre>
+                    <p class="endpoints_endpoint-info_data">
+                        JSON object with data about user (username, password, email, and birthday (if present))*
+                    </p>
+                    <p class="endpoints_endpoint-info_data">
+                        Input verification:<br>
+                        <ul class="endpoints_endpoint-info_data_list">
+                            <li>Username must be at least 5 characters long and include only alphanumeric characters</li>
+                            <li>Password must be at least 8 characters long</li>
+                            <li>Email must be a valid email address</li>
+                        </ul>
+                    </p>
+                    <pre class="endpoints_endpoint-info_code">
+                        <code>
+                            {
+                                Username: String,
+                                Password: String,
+                                Email: String,
+                                Birthday: Date ("mm/dd/yy")
+                            }
+                        </code>
+                    </pre>
+                    <p class="endpoints_endpoint-info_data">
+                        *Please note that ALL required fields (username, password, email) must be present in request body; if a field is not being changed, include it in the request body with its current value
                     </p>
                     <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">JSON object with all current data about user after update (user id, username, password, email, birthday (if present), favorite movies list)
-                        <pre>
-                            <code>
-                                {
-                                    _id: ObjectId,
-                                    Username: String,
-                                    Password: String,
-                                    Email: String,
-                                    Birthday: Date,
-                                    FavoriteMovies: [MovieId]
-                                }
-                            </code>
-                        </pre>
+                    <p class="endpoints_endpoint-info_data">
+                        JSON object with all current data about user after update (user id, username, password, email, birthday (if present), favorite movies list)
                     </p>
+                    <pre class="endpoints_endpoint-info_code">
+                        <code>
+                            {
+                                _id: ObjectId,
+                                Username: String,
+                                Password: String,
+                                Email: String,
+                                Birthday: Date,
+                                FavoriteMovies: [MovieId]
+                            }
+                        </code>
+                    </pre>
                 </div>
 
                 <div class="endpoints_endpoint-info">
@@ -166,20 +191,21 @@
                     <h4>Request body data format:</h4>
                     <p class="endpoints_endpoint-info_data">none</p>
                     <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">JSON object with data about user (user id, username, password, email, birthday (if present), favorite movies list which includes newly added movie id)
-                        <pre>
-                            <code>
-                                {
-                                    _id: ObjectId,
-                                    Username: String,
-                                    Password: String,
-                                    Email: String,
-                                    Birthday: Date,
-                                    FavoriteMovies: [MovieId]
-                                }
-                            </code>
-                        </pre>
+                    <p class="endpoints_endpoint-info_data">
+                        JSON object with data about user (user id, username, password, email, birthday (if present), favorite movies list which includes newly added movie id)
                     </p>
+                    <pre class="endpoints_endpoint-info_code">
+                        <code>
+                            {
+                                _id: ObjectId,
+                                Username: String,
+                                Password: String,
+                                Email: String,
+                                Birthday: Date,
+                                FavoriteMovies: [MovieId]
+                            }
+                        </code>
+                    </pre>
                 </div>
 
                 <div class="endpoints_endpoint-info">
@@ -204,31 +230,32 @@
                     <h3>POST /login</h3>
                     <p>Logs user in, granting them access to the database</p>
                     <h4>Request body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">JSON object with username and password
-                        <pre>
-                            <code>
-                                {
-                                    Username: String,
-                                    Password: String
-                                }
-                            </code>
-                        </pre>
-                    </p>
+                    <p class="endpoints_endpoint-info_data">JSON object with username and password</p>
+                    <pre class="endpoints_endpoint-info_code">
+                        <code>
+                            {
+                                Username: String,
+                                Password: String
+                            }
+                        </code>
+                    </pre>
                     <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">JSON object with data about user (user id, username, password, email, birthday (if present), favorite movies list), and newly created JSON web token (JWT)
-                        <pre>
-                            <code>
-                                {
-                                    _id: ObjectId,
-                                    Username: String,
-                                    Password: String,
-                                    Email: String,
-                                    Birthday: Date,
-                                    FavoriteMovies: [MovieId]
-                                }
-                                token: [JWT]
-                            </code>
-                        </pre></p>
+                    <p class="endpoints_endpoint-info_data">
+                        JSON object with data about user (user id, username, password, email, birthday (if present), favorite movies list), and newly created JSON web token (JWT)
+                    </p>
+                    <pre class="endpoints_endpoint-info_code">
+                        <code>
+                            {
+                                _id: ObjectId,
+                                Username: String,
+                                Password: String,
+                                Email: String,
+                                Birthday: Date,
+                                FavoriteMovies: [MovieId]
+                            }
+                            token: [JWT]
+                        </code>
+                    </pre>
                 </div>
             </div>
         </main>
