@@ -40,18 +40,18 @@ h4 {
 }
 
 .endpoints_endpoint-info {
-    width: 400px;
+    width: 600px;
+    margin-left: 90px;
 }
 
 .endpoints_endpoint-info_data {
     padding-left: 50px;
 }
 
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
+.endpoints_endpoint-info_code {
+    margin-left: -120px;
 }
 
-thead {
-    background-color: rgb(110, 139, 139);
+.endpoints_endpoint-info_data_list {
+    padding-left: 80px;
 }
