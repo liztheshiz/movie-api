@@ -17,6 +17,8 @@ app.use(morgan('common'));
 app.use(express.json());
 app.use(express.static('public'));
 
+app.use(cors());
+
 /*let allowedOrigins = ['http://localhost:8081', 'http://testsite.com']; // PLACEHOLDER FOR CINEMADB DOMAIN
 app.use(cors({
     origin: (origin, callback) => {
