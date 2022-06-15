@@ -2,48 +2,50 @@
 
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Cinema Database</title>
-        <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/styles.css" type="text/css">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cinema Database</title>
+    <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+</head>
 
-    <body>
-        <main>
-            <div class="header">
-                <h1>Welcome to Cinema Database!</h1>
-                <div class="subheader">
-                    <p>This API essentially provides an interactive database of information on films, directors, and genres.<br>
+<body>
+    <main>
+        <div class="header">
+            <h1>Welcome to Cinema Database API!</h1>
+            <div class="subheader">
+                <p>This API essentially provides an interactive database of information on films, directors, and
+                    genres.<br>
                     Additionally, users can register to create and manage a list of their favorite films.</p>
-                </div>
             </div>
-            
-            <div class="endpoints">
-                <h2>All URL endpoints and their request/response types:</h2>
-                <div class="endpoints_endpoint-info">
-                    <h3>GET /movies</h3>
-                    <p>Gets list of all movies in the database</p>
-                    <h4>Request body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">none</p>
-                    <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">JSON object with list of all movies with their info</p>
-                </div>
+        </div>
 
-                <div class="endpoints_endpoint-info">
-                    <h3>GET /movies/[Title]</h3>
-                    <p>Gets data about a single movie in the database, by title</p>
-                    <h4>Request body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">none</p>
-                    <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">
-                        JSON object with movie info (movie id, description, genre, director, image URL, and whether it's featured or not)
-                    </p>
-                    <pre class="endpoints_endpoint-info_code">
+        <div class="endpoints">
+            <h2>All URL endpoints and their request/response types:</h2>
+            <div class="endpoints_endpoint-info">
+                <h3>GET /movies</h3>
+                <p>Gets list of all movies in the database</p>
+                <h4>Request body data format:</h4>
+                <p class="endpoints_endpoint-info_data">none</p>
+                <h4>Response body data format:</h4>
+                <p class="endpoints_endpoint-info_data">JSON object with list of all movies with their info</p>
+            </div>
+
+            <div class="endpoints_endpoint-info">
+                <h3>GET /movies/[Title]</h3>
+                <p>Gets data about a single movie in the database, by title</p>
+                <h4>Request body data format:</h4>
+                <p class="endpoints_endpoint-info_data">none</p>
+                <h4>Response body data format:</h4>
+                <p class="endpoints_endpoint-info_data">
+                    JSON object with movie info (movie id, description, genre, director, image URL, and whether it's
+                    featured or not)
+                </p>
+                <pre class="endpoints_endpoint-info_code">
                         <code>
                             {
                                 _id: ObjectId,
@@ -64,27 +66,27 @@
                             }
                         </code>
                     </pre>
-                </div>
+            </div>
 
-                <div class="endpoints_endpoint-info">
-                    <h3>GET /movies/genres/[Genre]</h3>
-                    <p>Gets data about a genre in the database, by name</p>
-                    <h4>Request body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">none</p>
-                    <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">Text message of genre description</p>
-                </div>
+            <div class="endpoints_endpoint-info">
+                <h3>GET /movies/genres/[Genre]</h3>
+                <p>Gets data about a genre in the database, by name</p>
+                <h4>Request body data format:</h4>
+                <p class="endpoints_endpoint-info_data">none</p>
+                <h4>Response body data format:</h4>
+                <p class="endpoints_endpoint-info_data">Text message of genre description</p>
+            </div>
 
-                <div class="endpoints_endpoint-info">
-                    <h3>GET /movies/directors/[Director]</h3>
-                    <p>Gets data about a director in the database, by name</p>
-                    <h4>Request body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">none</p>
-                    <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">
-                        JSON object with director info (bio, birth year, and death year)
-                    </p>
-                    <pre class="endpoints_endpoint-info_code">
+            <div class="endpoints_endpoint-info">
+                <h3>GET /movies/directors/[Director]</h3>
+                <p>Gets data about a director in the database, by name</p>
+                <h4>Request body data format:</h4>
+                <p class="endpoints_endpoint-info_data">none</p>
+                <h4>Response body data format:</h4>
+                <p class="endpoints_endpoint-info_data">
+                    JSON object with director info (bio, birth year, and death year)
+                </p>
+                <pre class="endpoints_endpoint-info_code">
                         <code>
                             {
                                 Name: String,
@@ -94,24 +96,24 @@
                             }
                         </code>
                     </pre>
-                </div>
+            </div>
 
-                <div class="endpoints_endpoint-info">
-                    <h3>POST /users</h3>
-                    <p>Adds new user to database</p>
-                    <h4>Request body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">
-                        JSON object with username, password, email, and (optionally) birthday
-                    </p>
-                    <p class="endpoints_endpoint-info_data">
-                        Input verification:<br>
-                        <ul class="endpoints_endpoint-info_data_list">
-                            <li>Username must be at least 5 characters long and include only alphanumeric characters</li>
-                            <li>Password must be at least 8 characters long</li>
-                            <li>Email must be a valid email address</li>
-                        </ul>
-                    </p>
-                    <pre class="endpoints_endpoint-info_code">
+            <div class="endpoints_endpoint-info">
+                <h3>POST /users</h3>
+                <p>Adds new user to database</p>
+                <h4>Request body data format:</h4>
+                <p class="endpoints_endpoint-info_data">
+                    JSON object with username, password, email, and (optionally) birthday
+                </p>
+                <p class="endpoints_endpoint-info_data">
+                    Input verification:<br>
+                <ul class="endpoints_endpoint-info_data_list">
+                    <li>Username must be at least 5 characters long and include only alphanumeric characters</li>
+                    <li>Password must be at least 8 characters long</li>
+                    <li>Email must be a valid email address</li>
+                </ul>
+                </p>
+                <pre class="endpoints_endpoint-info_code">
                         <code>
                             {
                                 Username: String,
@@ -121,11 +123,12 @@
                             }
                         </code>
                     </pre>
-                    <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">
-                        JSON object with user id, username, password, email, birthday (if present), and favorite movies list (begins empty)
-                    </p>
-                    <pre class="endpoints_endpoint-info_code">
+                <h4>Response body data format:</h4>
+                <p class="endpoints_endpoint-info_data">
+                    JSON object with user id, username, password, email, birthday (if present), and favorite movies list
+                    (begins empty)
+                </p>
+                <pre class="endpoints_endpoint-info_code">
                         <code>
                             {
                                 _id: ObjectId,
@@ -137,24 +140,24 @@
                             }
                         </code>
                     </pre>
-                </div>
+            </div>
 
-                <div class="endpoints_endpoint-info">
-                    <h3>PUT /users/[Username]</h3>
-                    <p>Updates user's info by current username</p>
-                    <h4>Request body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">
-                        JSON object with data about user (username, password, email, and birthday (if present))*
-                    </p>
-                    <p class="endpoints_endpoint-info_data">
-                        Input verification:<br>
-                        <ul class="endpoints_endpoint-info_data_list">
-                            <li>Username must be at least 5 characters long and include only alphanumeric characters</li>
-                            <li>Password must be at least 8 characters long</li>
-                            <li>Email must be a valid email address</li>
-                        </ul>
-                    </p>
-                    <pre class="endpoints_endpoint-info_code">
+            <div class="endpoints_endpoint-info">
+                <h3>PUT /users/[Username]</h3>
+                <p>Updates user's info by current username</p>
+                <h4>Request body data format:</h4>
+                <p class="endpoints_endpoint-info_data">
+                    JSON object with data about user (username, password, email, and birthday (if present))*
+                </p>
+                <p class="endpoints_endpoint-info_data">
+                    Input verification:<br>
+                <ul class="endpoints_endpoint-info_data_list">
+                    <li>Username must be at least 5 characters long and include only alphanumeric characters</li>
+                    <li>Password must be at least 8 characters long</li>
+                    <li>Email must be a valid email address</li>
+                </ul>
+                </p>
+                <pre class="endpoints_endpoint-info_code">
                         <code>
                             {
                                 Username: String,
@@ -164,14 +167,16 @@
                             }
                         </code>
                     </pre>
-                    <p class="endpoints_endpoint-info_data">
-                        *Please note that ALL required fields (username, password, email) must be present in request body; if a field is not being changed, include it in the request body with its current value
-                    </p>
-                    <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">
-                        JSON object with all current data about user after update (user id, username, password, email, birthday (if present), favorite movies list)
-                    </p>
-                    <pre class="endpoints_endpoint-info_code">
+                <p class="endpoints_endpoint-info_data">
+                    *Please note that ALL required fields (username, password, email) must be present in request body;
+                    if a field is not being changed, include it in the request body with its current value
+                </p>
+                <h4>Response body data format:</h4>
+                <p class="endpoints_endpoint-info_data">
+                    JSON object with all current data about user after update (user id, username, password, email,
+                    birthday (if present), favorite movies list)
+                </p>
+                <pre class="endpoints_endpoint-info_code">
                         <code>
                             {
                                 _id: ObjectId,
@@ -183,18 +188,19 @@
                             }
                         </code>
                     </pre>
-                </div>
+            </div>
 
-                <div class="endpoints_endpoint-info">
-                    <h3>POST /users/[Username]/FavoriteMovies/[MovieID]</h3>
-                    <p>Adds movie to user's favorites list</p>
-                    <h4>Request body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">none</p>
-                    <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">
-                        JSON object with data about user (user id, username, password, email, birthday (if present), favorite movies list which includes newly added movie id)
-                    </p>
-                    <pre class="endpoints_endpoint-info_code">
+            <div class="endpoints_endpoint-info">
+                <h3>POST /users/[Username]/FavoriteMovies/[MovieID]</h3>
+                <p>Adds movie to user's favorites list</p>
+                <h4>Request body data format:</h4>
+                <p class="endpoints_endpoint-info_data">none</p>
+                <h4>Response body data format:</h4>
+                <p class="endpoints_endpoint-info_data">
+                    JSON object with data about user (user id, username, password, email, birthday (if present),
+                    favorite movies list which includes newly added movie id)
+                </p>
+                <pre class="endpoints_endpoint-info_code">
                         <code>
                             {
                                 _id: ObjectId,
@@ -206,32 +212,32 @@
                             }
                         </code>
                     </pre>
-                </div>
+            </div>
 
-                <div class="endpoints_endpoint-info">
-                    <h3>DELETE /users/[Username]/FavoriteMovies/[MovieID]</h3>
-                    <p>Removes movie from user's favorites list</p>
-                    <h4>Request body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">none</p>
-                    <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">Text message indicating movie was removed</p>
-                </div>
+            <div class="endpoints_endpoint-info">
+                <h3>DELETE /users/[Username]/FavoriteMovies/[MovieID]</h3>
+                <p>Removes movie from user's favorites list</p>
+                <h4>Request body data format:</h4>
+                <p class="endpoints_endpoint-info_data">none</p>
+                <h4>Response body data format:</h4>
+                <p class="endpoints_endpoint-info_data">Text message indicating movie was removed</p>
+            </div>
 
-                <div class="endpoints_endpoint-info">
-                    <h3>DELETE /users/[Username]</h3>
-                    <p>Removes user from database</p>
-                    <h4>Request body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">none</p>
-                    <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">Text message indicating user was removed</p>
-                </div>
+            <div class="endpoints_endpoint-info">
+                <h3>DELETE /users/[Username]</h3>
+                <p>Removes user from database</p>
+                <h4>Request body data format:</h4>
+                <p class="endpoints_endpoint-info_data">none</p>
+                <h4>Response body data format:</h4>
+                <p class="endpoints_endpoint-info_data">Text message indicating user was removed</p>
+            </div>
 
-                <div class="endpoints_endpoint-info">
-                    <h3>POST /login</h3>
-                    <p>Logs user in, granting them access to the database</p>
-                    <h4>Request body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">JSON object with username and password</p>
-                    <pre class="endpoints_endpoint-info_code">
+            <div class="endpoints_endpoint-info">
+                <h3>POST /login</h3>
+                <p>Logs user in, granting them access to the database</p>
+                <h4>Request body data format:</h4>
+                <p class="endpoints_endpoint-info_data">JSON object with username and password</p>
+                <pre class="endpoints_endpoint-info_code">
                         <code>
                             {
                                 Username: String,
@@ -239,11 +245,12 @@
                             }
                         </code>
                     </pre>
-                    <h4>Response body data format:</h4>
-                    <p class="endpoints_endpoint-info_data">
-                        JSON object with data about user (user id, username, password, email, birthday (if present), favorite movies list), and newly created JSON web token (JWT)
-                    </p>
-                    <pre class="endpoints_endpoint-info_code">
+                <h4>Response body data format:</h4>
+                <p class="endpoints_endpoint-info_data">
+                    JSON object with data about user (user id, username, password, email, birthday (if present),
+                    favorite movies list), and newly created JSON web token (JWT)
+                </p>
+                <pre class="endpoints_endpoint-info_code">
                         <code>
                             {
                                 _id: ObjectId,
@@ -256,9 +263,10 @@
                             token: [JWT]
                         </code>
                     </pre>
-                </div>
             </div>
-        </main>
+        </div>
+    </main>
 
-    </body>
+</body>
+
 </html>
