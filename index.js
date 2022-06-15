@@ -3,7 +3,7 @@ const express = require('express'),
     morgan = require('morgan'),
     mongoose = require('mongoose'),
     Models = require('./models.js'),
-    /*cors = require('cors'),*/
+    cors = require('cors'),
     { check, validationResult } = require('express-validator');
 
 const app = express(),
@@ -18,9 +18,9 @@ app.use(morgan('common'));
 app.use(express.json());
 app.use(express.static('public'));
 
-/* app.use(cors());
+app.use(cors());
 
-let allowedOrigins = ['http://localhost:8081', 'https://cinemadatabase.herokuapp.com', 'http://localhost:1234'];
+/*let allowedOrigins = ['http://localhost:8081', 'https://cinemadatabase.herokuapp.com', 'http://localhost:1234'];
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin) return callback(null, true);
@@ -30,7 +30,7 @@ app.use(cors({
         }
         return callback(null, true);
     }
-})); */
+}));*/
 
 let auth = require('./auth.js')(app);
 const passport = require('passport');
