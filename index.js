@@ -38,7 +38,7 @@ require('./passport.js');
 
 // CUSTOM GET REQUESTS
 // Return movies collection as json
-app.get('/movies', /*passport.authenticate('jwt', {session: false}), */(req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.find().then(movies => res.json(movies));
 });
 
