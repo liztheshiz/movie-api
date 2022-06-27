@@ -69,6 +69,28 @@
             </div>
 
             <div class="endpoints_endpoint-info">
+                <h3>GET /users/[Username]</h3>
+                <p>Gets data about a single user in the database, by username</p>
+                <h4>Request body data format:</h4>
+                <p class="endpoints_endpoint-info_data">none</p>
+                <h4>Response body data format:</h4>
+                <p class="endpoints_endpoint-info_data">
+                    JSON object with user info (user id, (hashed) password, email, birthday, and favorite movies list)
+                </p>
+                <pre class="endpoints_endpoint-info_code">
+                        <code>
+                            {
+                                Username: String,
+                                Password: String,
+                                Email: String,
+                                Birthday: Date,
+                                FavoriteMovies: [MovidId]
+                            }
+                        </code>
+                    </pre>
+            </div>
+
+            <div class="endpoints_endpoint-info">
                 <h3>GET /movies/genres/[Genre]</h3>
                 <p>Gets data about a genre in the database, by name</p>
                 <h4>Request body data format:</h4>
@@ -125,7 +147,8 @@
                     </pre>
                 <h4>Response body data format:</h4>
                 <p class="endpoints_endpoint-info_data">
-                    JSON object with user id, username, password, email, birthday (if present), and favorite movies list
+                    JSON object with user id, username, (hashed) password, email, birthday (if present), and favorite
+                    movies list
                     (begins empty)
                 </p>
                 <pre class="endpoints_endpoint-info_code">
@@ -173,7 +196,8 @@
                 </p>
                 <h4>Response body data format:</h4>
                 <p class="endpoints_endpoint-info_data">
-                    JSON object with all current data about user after update (user id, username, password, email,
+                    JSON object with all current data about user after update (user id, username, (hashed) password,
+                    email,
                     birthday (if present), favorite movies list)
                 </p>
                 <pre class="endpoints_endpoint-info_code">
@@ -197,7 +221,8 @@
                 <p class="endpoints_endpoint-info_data">none</p>
                 <h4>Response body data format:</h4>
                 <p class="endpoints_endpoint-info_data">
-                    JSON object with data about user (user id, username, password, email, birthday (if present),
+                    JSON object with data about user (user id, username, (hashed) password, email, birthday (if
+                    present),
                     favorite movies list which includes newly added movie id)
                 </p>
                 <pre class="endpoints_endpoint-info_code">
@@ -247,7 +272,8 @@
                     </pre>
                 <h4>Response body data format:</h4>
                 <p class="endpoints_endpoint-info_data">
-                    JSON object with data about user (user id, username, password, email, birthday (if present),
+                    JSON object with data about user (user id, username, (hashed) password, email, birthday (if
+                    present),
                     favorite movies list), and newly created JSON web token (JWT)
                 </p>
                 <pre class="endpoints_endpoint-info_code">
