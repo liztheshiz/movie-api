@@ -56,6 +56,20 @@ app.get('/movies/:title', passport.authenticate('jwt', { session: false }), (req
     });
 });
 
+// Gets data about a single user, by username
+app.get('/users/:username', passport.authenticate('jwt', { session: false }), (req, res) => {
+    Users.findOne({ Username: req.params.username }).then(user => {
+        if (user) {
+            res.status(201).json(user);
+        } else {
+            res.status(404).send('User with the username ' + req.params.username + ' was not found.');
+        }
+    }).catch(err => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    });
+});
+
 // Gets description of a given genre
 app.get('/movies/genres/:name', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.findOne({ 'Genre.Name': req.params.name }).then(movie => {
