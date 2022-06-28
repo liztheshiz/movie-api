@@ -156,6 +156,8 @@ app.put('/users/:username', passport.authenticate('jwt', { session: false }),
             Email: req.body.Email,
             Birthday: req.body.Birthday
         }
+        // Only passes non-empty fields into update object
+        Object.keys(obj).forEach((i) => obj[i] == '' && delete obj[i]);
 
         Users.findOneAndUpdate({ Username: req.params.username }, {
             $set: obj
