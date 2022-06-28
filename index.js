@@ -150,9 +150,12 @@ app.put('/users/:username', passport.authenticate('jwt', { session: false }),
         }
 
         let hashedPassword = '';
-        console.log(`initial password field: ${hashedPassword}`)
-        console.log(`initial hashedpassword: ${hashedPassword}`)
-        //if (!req.body.Password == '') { hashedPassword = /*Users.hashPassword(req.body.Password)*/test; console.log('if statement called!'); }
+        console.log(`initial password field: ${hashedPassword}`);
+        console.log(`initial hashedpassword: ${hashedPassword}`);
+        if (!req.body.Password == '') {
+            //hashedPassword = /*Users.hashPassword(req.body.Password)*/test;
+            console.log('if statement called!');
+        }
         const obj = {
             Username: req.body.Username,
             Password: hashedPassword,
