@@ -136,11 +136,11 @@ app.post('/users',
 // Update user's info by current Username
 app.put('/users/:username', passport.authenticate('jwt', { session: false }),
     [   // Validation checks
-        check('Username', 'Username must be at least 5 characters').isLength({ min: 5 }),
-        check('Username', 'Username must contain only alphanumeric characters').isAlphanumeric(),
-        check('Password', 'Password must be at least 8 characters').isLength({ min: 8 }),
-        check('Email', 'Email does not appear to be valid').isEmail(),
-        check('Birthday', 'Birthday must use format MM/DD/YY').isDate({ format: 'MM/DD/YY' })
+        check('Username', 'Username must be at least 5 characters').optional({ checkFalsy: true }).isLength({ min: 5 }),
+        check('Username', 'Username must contain only alphanumeric characters').optional({ checkFalsy: true }).isAlphanumeric(),
+        check('Password', 'Password must be at least 8 characters').optional({ checkFalsy: true }).isLength({ min: 8 }),
+        check('Email', 'Email does not appear to be valid').optional({ checkFalsy: true }).isEmail(),
+        check('Birthday', 'Birthday must use format MM/DD/YY').optional({ checkFalsy: true }).isDate({ format: 'MM/DD/YY' })
     ],
     (req, res) => {
         // First check for validation errors
