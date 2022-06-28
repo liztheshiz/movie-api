@@ -138,7 +138,8 @@ app.put('/users/:username', passport.authenticate('jwt', { session: false }),
         check('Username', 'Username must be at least 5 characters').isLength({ min: 5 }),
         check('Username', 'Username must contain only alphanumeric characters').isAlphanumeric(),
         check('Password', 'Password must be at least 8 characters').isLength({ min: 8 }),
-        check('Email', 'Email does not appear to be valid').isEmail()
+        check('Email', 'Email does not appear to be valid').isEmail(),
+        check('Birthday', 'Birthday must use format MM/DD/YY').isDate({ format: 'MM/DD/YY' })
     ],
     (req, res) => {
         // First check for validation errors
