@@ -149,6 +149,7 @@ app.put('/users/:username', passport.authenticate('jwt', { session: false }),
             return res.status(422).json({ errors: errors.array() });
         }
 
+        let hashedPassword = Users.hashPassword(req.body.Password);
         const obj = {
             Username: req.body.Username,
             Password: hashedPassword,
@@ -156,7 +157,6 @@ app.put('/users/:username', passport.authenticate('jwt', { session: false }),
             Birthday: req.body.Birthday
         }
 
-        let hashedPassword = Users.hashPassword(req.body.Password);
         Users.findOneAndUpdate({ Username: req.params.username }, {
             $set: obj
         }, { new: true })
