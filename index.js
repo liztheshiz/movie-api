@@ -150,7 +150,7 @@ app.put('/users/:username', passport.authenticate('jwt', { session: false }),
         }
 
         let hashedPassword = '';
-        if (req.body.Password) { hashedPassword = Users.hashPassword(req.body.Password); }
+        if (req.body.Password !== '') { hashedPassword = /*Users.hashPassword(req.body.Password)*/test; }
         const obj = {
             Username: req.body.Username,
             Password: hashedPassword,
