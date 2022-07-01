@@ -1,0 +1,427 @@
+{
+	"info": {
+		"_postman_id": "04802bcf-418c-4c7f-b54c-5ca4d2d12227",
+		"name": "Movie API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21283560"
+	},
+	"item": [
+		{
+			"name": "/movies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cinemadatabase.herokuapp.com/movies",
+					"protocol": "https",
+					"host": [
+						"cinemadatabase",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movies/:title",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cinemadatabase.herokuapp.com/movies/:title",
+					"protocol": "https",
+					"host": [
+						"cinemadatabase",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies",
+						":title"
+					],
+					"variable": [
+						{
+							"key": "title",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users/:username",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cinemadatabase.herokuapp.com/users/:username",
+					"protocol": "https",
+					"host": [
+						"cinemadatabase",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						":username"
+					],
+					"variable": [
+						{
+							"key": "username",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movies/genres/:name",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cinemadatabase.herokuapp.com/movies/genres/:name",
+					"protocol": "https",
+					"host": [
+						"cinemadatabase",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies",
+						"genres",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movies/directors/:name",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cinemadatabase.herokuapp.com/movies/directors/:name",
+					"protocol": "https",
+					"host": [
+						"cinemadatabase",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies",
+						"directors",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Username\": \"\",\n    \"Password\": \"\",\n    \"Email\": \"\",\n    \"Birthday\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cinemadatabase.herokuapp.com/users",
+					"protocol": "https",
+					"host": [
+						"cinemadatabase",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users/:username",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Username\": \"\",\n    \"Password\": \"\",\n    \"Email\": \"\",\n    \"Birthday\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cinemadatabase.herokuapp.com/users/:username",
+					"protocol": "https",
+					"host": [
+						"cinemadatabase",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						":username"
+					],
+					"variable": [
+						{
+							"key": "username",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users/:username/FavoriteMovies/:movieid",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://cinemadatabase.herokuapp.com/users/:user/FavoriteMovies/:movieid",
+					"protocol": "https",
+					"host": [
+						"cinemadatabase",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						":user",
+						"FavoriteMovies",
+						":movieid"
+					],
+					"variable": [
+						{
+							"key": "user",
+							"value": null
+						},
+						{
+							"key": "movieid",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users/:username/FavoriteMovies/:movieid",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://cinemadatabase.herokuapp.com/users/:username/FavoriteMovies/:movieid",
+					"protocol": "https",
+					"host": [
+						"cinemadatabase",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						":username",
+						"FavoriteMovies",
+						":movieid"
+					],
+					"variable": [
+						{
+							"key": "username",
+							"value": null
+						},
+						{
+							"key": "movieid",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users/:username",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://cinemadatabase.herokuapp.com/users/:username",
+					"protocol": "https",
+					"host": [
+						"cinemadatabase",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						":username"
+					],
+					"variable": [
+						{
+							"key": "username",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmEyMThlZjU5NmRkNmViZDc4NzM0ODUiLCJVc2VybmFtZSI6InRoaXNpc2xpeiIsIlBhc3N3b3JkIjoiJDJiJDEwJGR2NzNnUlJVNVFSdXZHa09GRG1pMC4zRGtCZ3d2bjhsaXhUNE5DQkE2MEJDTDFMOXJyR2dLIiwiRW1haWwiOiJsaXZlbGF1Z2hsb3ZlQHlhaG9vLmNvbSIsIkJpcnRoZGF5IjoiMTk3Ny0wNS0yN1QwNDowMDowMC4wMDBaIiwiRmF2b3JpdGVNb3ZpZXMiOltdLCJfX3YiOjAsImlhdCI6MTY1NTAzODU4NywiZXhwIjoxNjU1NjQzMzg3LCJzdWIiOiJ0aGlzaXNsaXoifQ.LNqzDgo_C1wXt3EPt0OFOQMoUsij4bmpY2SrNN4A6Uw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Username\": \"\",\n    \"Password\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cinemadatabase.herokuapp.com/login",
+					"protocol": "https",
+					"host": [
+						"cinemadatabase",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
