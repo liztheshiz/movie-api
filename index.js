@@ -193,7 +193,7 @@ app.delete('/users/:username/FavoriteMovies/:movieid', passport.authenticate('jw
     Users.findOneAndUpdate({ Username: req.params.username }, {
         $pull: { FavoriteMovies: req.params.movieid }
     }, { new: true })
-        .then(user => { res.status(201).send('Movie ' + req.params.movieid + ' was deleted from ' + user.Username + '\'s list.') })
+        .then(user => { res.status(200).send('Movie ' + req.params.movieid + ' was deleted from ' + user.Username + '\'s list.') })
         .catch(err => {
             console.error(err);
             res.status(500).send('Error: ' + err);
