@@ -37,12 +37,12 @@ const passport = require('passport');
 require('./passport.js');
 
 // CUSTOM GET REQUESTS
-// Return movies collection as json
+/** Return movies collection as json */
 app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.find().then(movies => res.json(movies));
 });
 
-// Gets data about a single movie, by title
+/** Gets data about a single movie, by title */
 app.get('/movies/:title', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.findOne({ Title: req.params.title }).then(movie => {
         if (movie) {
@@ -56,7 +56,7 @@ app.get('/movies/:title', passport.authenticate('jwt', { session: false }), (req
     });
 });
 
-// Gets data about a single user, by username
+/** Gets data about a single user, by username */
 app.get('/users/:username', passport.authenticate('jwt', { session: false }), (req, res) => {
     Users.findOne({ Username: req.params.username }).then(user => {
         if (user) {
@@ -70,7 +70,7 @@ app.get('/users/:username', passport.authenticate('jwt', { session: false }), (r
     });
 });
 
-// Gets description of a given genre
+/** Gets description of a given genre */
 app.get('/movies/genres/:name', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.findOne({ 'Genre.Name': req.params.name }).then(movie => {
         if (movie) {
@@ -81,7 +81,7 @@ app.get('/movies/genres/:name', passport.authenticate('jwt', { session: false })
     });
 });
 
-// Gets data about a director, by name
+/** Gets data about a director, by name */
 app.get('/movies/directors/:name', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.findOne({ 'Director.Name': req.params.name }).then(movie => {
         if (movie) {
@@ -92,7 +92,7 @@ app.get('/movies/directors/:name', passport.authenticate('jwt', { session: false
     });
 });
 
-// Adds new user doc to users collection
+/** Adds new user doc to users collection */
 app.post('/users',
     [   // Validation checks
         check('Username', 'Username must be at least 5 characters').isLength({ min: 5 }),
@@ -133,7 +133,7 @@ app.post('/users',
             });
     });
 
-// Update user's info by current Username
+/** Update user's info by current Username */
 app.put('/users/:username', passport.authenticate('jwt', { session: false }),
     [   // Validation checks
         check('Username', 'Username must be at least 5 characters').optional({ checkFalsy: true }).isLength({ min: 5 }),
@@ -176,7 +176,7 @@ app.put('/users/:username', passport.authenticate('jwt', { session: false }),
             });
     });
 
-// Adds movie to user's list of favorite movies
+/** Adds movie to user's list of favorite movies */
 app.post('/users/:username/FavoriteMovies/:movieid', passport.authenticate('jwt', { session: false }), (req, res) => {
     Users.findOneAndUpdate({ Username: req.params.username }, {
         $addToSet: { FavoriteMovies: req.params.movieid }   // WON'T THROW ERROR IF MOVIE ALREADY PRESENT
@@ -188,7 +188,7 @@ app.post('/users/:username/FavoriteMovies/:movieid', passport.authenticate('jwt'
         });
 });
 
-// Deletes a movie from user's list by title
+/** Deletes a movie from user's list by title */
 app.delete('/users/:username/FavoriteMovies/:movieid', passport.authenticate('jwt', { session: false }), (req, res) => {
     Users.findOneAndUpdate({ Username: req.params.username }, {
         $pull: { FavoriteMovies: req.params.movieid }
@@ -201,7 +201,7 @@ app.delete('/users/:username/FavoriteMovies/:movieid', passport.authenticate('jw
         });
 });
 
-// Deletes a user from users collection by username
+/** Deletes a user from users collection by username */
 app.delete('/users/:username', passport.authenticate('jwt', { session: false }), (req, res) => {
     Users.findOneAndRemove({ Username: req.params.username })
         .then(user => {
@@ -217,13 +217,13 @@ app.delete('/users/:username', passport.authenticate('jwt', { session: false }),
         });
 });
 
-// Error handling
+/** Error handling */
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
 });
 
-// Listen for requests
+/** Listen for requests on port 8081 for local testing */
 const port = process.env.PORT || 8081;
 app.listen(port, '0.0.0.0', () => {
     console.log('Listening on Port ' + port);
