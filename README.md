@@ -2,7 +2,7 @@
 
 This API provides an interactive database of information on films, directors, and genres. Additionally, users can register to create and manage a list of their favorite films.
 
-This API was built primarily for use with the [Cinema.Database]() React app, and is also used by the [MyFlix]() Angular version app.
+This API was built primarily for use with the [Cinema.Database](https://github.com/liztheshiz/movie-client) React app, and is also used by the [MyFlix](https://github.com/liztheshiz/movie-Angular-client) Angular version app.
 
 ## Dev instructions
 
