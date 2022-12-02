@@ -20,7 +20,7 @@ app.use(express.static('public'));
 const cors = require('cors');
 //app.use(cors());
 
-let allowedOrigins = ['http://localhost:8081', 'http://localhost:4200', 'https://liztheshiz.github.io', 'https://cinemadatabase.herokuapp.com', 'http://localhost:1234', 'https://cinemadatabase.netlify.app'];
+let allowedOrigins = ['http://localhost:8081', 'http://localhost:4200', 'https://liztheshiz.github.io', 'https://cinemadatabase.herokuapp.com', 'http://localhost:1234', 'https://cinemadatabase.netlify.app', 'ec2-44-195-89-18.compute-1.amazonaws.com'];
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin) return callback(null, true);
