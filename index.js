@@ -9,7 +9,7 @@ const app = express(),
     Movies = Models.Movie,
     Users = Models.User;
 
-//mongoose.connect('mongodb://localhost:27017/CinemaDB', { useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect('mongodb://localhost:27017/CinemaDB', { useNewUrlParser: true, useUnifiedTopology: true }); // for local testing
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // MIDDLEWARE
